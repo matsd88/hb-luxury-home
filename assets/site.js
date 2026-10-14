@@ -37,18 +37,50 @@
       if (!co.value || co.value <= ci.value) co.value = addDays(ci.value, 3);
       if (err) err.textContent = '';
     });
+    function fail(msg, field) { if (err) err.textContent = msg; field.focus(); }
+    co.addEventListener('change', function () { if (err) err.textContent = ''; });
     f.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (ci.value && co.value && co.value <= ci.value) {
-        if (err) err.textContent = 'Checkout needs to be after check-in.';
-        co.focus(); return;
-      }
+      // novalidate skips min/max, so typed dates need checking here
+      if (co.value && !ci.value) return fail('Add a check-in date too.', ci);
+      if (ci.value && ci.value < ymd(new Date())) return fail('Check-in can\'t be in the past.', ci);
+      if (ci.value && co.value && co.value <= ci.value) return fail('Checkout needs to be after check-in.', co);
       var u = new URL(AIRBNB);
       if (ci.value) u.searchParams.set('check_in', ci.value);
       if (co.value) u.searchParams.set('check_out', co.value);
       if (f.elements.g && f.elements.g.value) u.searchParams.set('adults', f.elements.g.value);
       var w = window.open(u.toString(), '_blank', 'noopener');
       if (!w) window.location.href = u.toString(); // pop-up blocked
+    });
+  });
+
+  /* Phone photo carousel: "2 / 5" counter */
+  var track = document.querySelector('.ph-track'), phCount = document.querySelector('.ph-count');
+  if (track && phCount) {
+    var n = track.children.length, raf = 0;
+    track.addEventListener('scroll', function () {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = 0;
+        phCount.textContent = (Math.round(track.scrollLeft / track.clientWidth) + 1) + ' / ' + n;
+      });
+    }, { passive: true });
+  }
+
+  /* Share: native sheet on phones, copy the link elsewhere */
+  function toast(msg) {
+    var t = document.createElement('div');
+    t.className = 'toast'; t.setAttribute('role', 'status'); t.textContent = msg;
+    document.body.appendChild(t);
+    requestAnimationFrame(function () { t.classList.add('show'); });
+    setTimeout(function () { t.classList.remove('show'); setTimeout(function () { t.remove(); }, 300); }, 2200);
+  }
+  document.querySelectorAll('[data-share]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var data = { title: document.title, url: location.origin + location.pathname };
+      if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+      if (navigator.clipboard) navigator.clipboard.writeText(data.url).then(function () { toast('Link copied'); }, function () { toast(data.url); });
+      else toast(data.url);
     });
   });
 
