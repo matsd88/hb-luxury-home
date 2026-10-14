@@ -1,0 +1,24 @@
+{
+  "name": "Luxury HB Home",
+  "short_name": "HB Home",
+  "description": "Huntington Beach vacation rental with a pool table. Book on Airbnb.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fbf8f3",
+  "theme_color": "#1d2a33",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
