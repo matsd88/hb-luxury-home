@@ -283,7 +283,7 @@ ul.links a{display:flex;justify-content:space-between;align-items:center;gap:12p
 ul.links a::after{content:"→";color:var(--coral);font-weight:700}
 ul.links a:hover{border-color:var(--ink);transform:translateY(-1px)}
 .cta{position:relative;overflow:hidden;background:var(--ink);color:#fff;border-radius:24px;padding:56px 32px;margin:48px 0 0;text-align:center;isolation:isolate}
-.cta::before{content:"";position:absolute;inset:0;background:url(/img/800/p27.webp) center/cover;opacity:.28;z-index:-1}
+.cta::before{content:"";position:absolute;inset:0;background:url(/img/800/p1.webp) center/cover;opacity:.28;z-index:-1}
 .cta h2{color:#fff;margin-bottom:10px}
 .cta p{color:#dfe7ea;max-width:56ch;margin:0 auto 22px}
 
