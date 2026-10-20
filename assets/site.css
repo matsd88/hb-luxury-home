@@ -330,3 +330,10 @@ body.no-scroll{overflow:hidden}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 @media print{.site-header,.topbar,.mbar,.cta,.site-footer .btn,.lightbox{display:none!important}}
+
+/* Comparison tables inside guides */
+.table-scroll{overflow-x:auto;margin:0 0 20px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--paper)}
+article table{width:100%;min-width:620px;border-collapse:collapse;font-size:15px;line-height:1.5}
+article th,article td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink-2)}
+article th{background:var(--sea-tint);color:var(--ink);font-weight:600}
+article tr:last-child td{border-bottom:0}
