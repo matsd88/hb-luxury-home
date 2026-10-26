@@ -1,0 +1,7 @@
+[2026-10-26T05:03:19.341Z] GET http://localhost:8765/blog/surf-city-marathon-2027-where-to-stay/ → 200 (4ms, 28482B)
+[2026-10-26T05:03:19.348Z] GET http://localhost:8765/assets/fonts/fraunces-latin.woff2 → 200 (28ms, 67388B)
+[2026-10-26T05:03:19.349Z] GET http://localhost:8765/assets/site.css → 200 (2ms, 24144B)
+[2026-10-26T05:03:19.349Z] GET http://localhost:8765/favicon.svg → 200 (4ms, 469B)
+[2026-10-26T05:03:19.349Z] GET http://localhost:8765/img/800/surf-city-marathon-pch.webp → 200 (3ms, 32844B)
+[2026-10-26T05:03:19.349Z] GET http://localhost:8765/assets/site.js → 200 (4ms, 8916B)
+[2026-10-26T05:03:19.375Z] GET http://localhost:8765/img/800/p1.webp → 200 (1ms, 39030B)
